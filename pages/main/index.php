@@ -94,11 +94,11 @@
 								</div>
 							<?php }else{ ?>
 							<div>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star "></span>
+								<span class="fa fa-star "></span>
+								<span class="fa fa-star "></span>
+								<span class="fa fa-star "></span>
+								<span class="fa fa-star "></span>
 							</div>
 						<?php } ?>
 							<p><span class="btn btn-primary">Đặt ngay</span></p>

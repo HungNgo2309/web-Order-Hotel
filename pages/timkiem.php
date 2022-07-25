@@ -8,8 +8,13 @@
 			$te =$_GET['te'];
 		}
  			$sql_hotel = "SELECT *FROM tb_danhmuchotel,tb_hotel,tb_chitiethotel Where tb_hotel.ID_Tinh = tb_danhmuchotel.ID_Tinh AND tb_hotel.ID_Hotel=tb_chitiethotel.ID_Hotel  AND tb_chitiethotel.DateCheckIn <='".$startdate."'AND tb_chitiethotel.DateCheckOut>='".$enddate."'AND NumberPeople='".$nl."' AND NumberChild ='".$te."' " ;
-          $query_hotel =mysqli_query($mysqli,$sql_hotel);
-         
+          
+          if(isset($_POST['tukhoa']))
+         { 
+         	$tukhoa=$_POST['tukhoa'];
+         	$sql_hotel = "SELECT *FROM tb_danhmuchotel,tb_hotel,tb_chitiethotel Where tb_hotel.ID_Tinh = tb_danhmuchotel.ID_Tinh AND tb_hotel.ID_Hotel=tb_chitiethotel.ID_Hotel  AND tb_hotel.TenHotel like'%$tukhoa%'";
+         }
+         $query_hotel =mysqli_query($mysqli,$sql_hotel);
 ?>
 			
 		

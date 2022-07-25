@@ -1,5 +1,27 @@
 <?php  
-	
+$nameErr = $emailErr = $passErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Tên không được để trống  ";
+  } 
+  
+  if (empty($_POST["email"])) {
+    $emailErr = "Email không được để trống";
+  } else {
+    if(!filter_var(trim($_POST['email']),FILTER_VALIDATE_EMAIL))
+        $emailErr = "Email không hợp lệ";
+  }
+   if (empty($_POST["matkhau"])) {
+    $passErr = "PassWord không được để trống";
+  }
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+if($nameErr==""&&$emailErr=="" &&$passErr=="")
 	if(isset($_POST['dangky'])){
 			$tenkhachhang = $_POST['hovaten'];
 			$email = $_POST['email'];
@@ -13,9 +35,9 @@
                 $_SESSION['email']=$email;
                 $_SESSION['id_khachhang']=mysqli_insert_id($mysqli);
 
-				header('Location:../index.php');
+				//header('Location:../index.php');
 			}
-	}
+	}}
 ?>
 <style type="text/css">
 	*{
@@ -80,17 +102,18 @@ h1{
     border: none;
     outline: none;
 }
+.error{ color: red ;}
 </style>
 <div class="container">
             <div class="login-form">
                 <form action=""  method="POST">
                     <h1>Đăng ký thành viên </h1>
                     <div class="input-box">
-                        <i >Họ và tên</i>
+                        <i >Họ và tên</i><span class="error">* <?php echo $nameErr;?></span>
                         <input type="text" name="hovaten" >
                     </div>
                     <div class="input-box">
-                        <i >Email</i>
+                        <i >Email</i><span class="error">* <?php echo $emailErr;?></span>
                         <input type="text" name="email" >
                     </div>
                      <div class="input-box">
@@ -98,7 +121,7 @@ h1{
                         <input type="text" name="diachi" >
                     </div>
                      <div class="input-box">
-                        <i >Mật khẩu</i>
+                        <i >Mật khẩu</i><span class="error">* <?php echo $passErr;?></span>
                         <input type="password" name="matkhau" >
                     </div>
                      <div class="input-box">

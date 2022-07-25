@@ -1,5 +1,5 @@
 <?php 
-	include ('../../config/config.php');
+	include ('../../admincp/config/config.php');
 	if(isset($_GET['code']))
 	{
 		$code=$_GET['code'];

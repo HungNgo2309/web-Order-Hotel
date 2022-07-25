@@ -2,8 +2,8 @@
 		<div class="gtco-container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-					<h2>Thông tin chi tiết Email</h2>
-					<p>Hãy nhập địa chỉ Email của bạn để được chúng tôi hướng dẫn cụ thể</p>
+					<h2 style="font-family:arial;" >Thông tin chi tiết Email</h2>
+					<p style="font-family:arial;" >Hãy nhập địa chỉ Email của bạn để được chúng tôi hướng dẫn cụ thể</p>
 				</div>
 			</div>
 			<div class="row animate-box">

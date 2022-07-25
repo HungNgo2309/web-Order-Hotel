@@ -67,9 +67,9 @@
 			include ("pages/main.php");
 			include ("pages/main/Mosttrip.php");
 			include ("pages/Howitwork.php");
-			include ("pages/sub.php");
-			include ("pages/Number.php");
-			include ("pages/footer.php");
+			include ("pages/main/sub.php");
+			include ("pages/main/Number.php");
+			include ("pages/main/footer.php");
 		 ?>
 	</div>
 

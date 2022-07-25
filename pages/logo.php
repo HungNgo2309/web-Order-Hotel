@@ -1,9 +1,9 @@
  <?php 
+ ob_start();
  $te=1;
  $i=1;
           $sql_danhmuc = "SELECT *FROM tb_danhmuchotel ORDER BY ID_Tinh ASC ";
           $query_danhmuc =mysqli_query($mysqli,$sql_danhmuc);
-         
          ?>
   <?php 
   if (isset($_GET['dangxuat'])&&$_GET['dangxuat']==1 ){
@@ -88,7 +88,6 @@ ul.dropdown {
 									  	 ?><a href="index.php?nltru=<?php echo $i ?>"> - </a> </li>
 									 <p><li style=" color: cornsilk;"	>Trẻ em <a href="index.php?tecong=<?php echo $te ?>"> +</a><?php 
 									  		echo $te;
-									  		
 									  	 ?><a href="index.php?tetru=<?php echo $te ?>"> - </a> </li>  </p>	 
 								</ul></li>
 								

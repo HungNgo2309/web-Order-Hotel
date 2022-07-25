@@ -13,10 +13,11 @@
     <th>Ngày trả phòng</th>
     <th>Giá phòng</th>
     <th>Thành tiền</th>
+    <td>Quản lí</td>
   </tr>
   <?php 
     $id_khachhang=  $_SESSION['id_khachhang'];
-	$sql_lietke_dp="SELECT tb_hotel.ID_Hotel,tb_hotel.Giaphong,tb_hotel.TenHotel,tb_chitietdatphong.Soluong,tb_hotel.Hinhanh,tb_chitietdatphong.StartDay,tb_chitietdatphong.EndDay FROM tb_datphong,tb_chitietdatphong,tb_hotel Where tb_datphong.id_khachhang = $id_khachhang AND tb_chitietdatphong.id_hotel=tb_hotel.ID_Hotel  AND tb_chitietdatphong.code =tb_datphong.Code GROUP BY tb_chitietdatphong.code,tb_hotel.ID_Hotel   ORDER BY tb_datphong.id_Don DESC";
+	$sql_lietke_dp="SELECT tb_chitietdatphong.id_chitiet,tb_hotel.ID_Hotel,tb_hotel.Giaphong,tb_hotel.TenHotel,tb_chitietdatphong.Soluong,tb_hotel.Hinhanh,tb_chitietdatphong.StartDay,tb_chitietdatphong.EndDay FROM tb_datphong,tb_chitietdatphong,tb_hotel Where tb_datphong.id_khachhang = $id_khachhang AND tb_chitietdatphong.id_hotel=tb_hotel.ID_Hotel  AND tb_chitietdatphong.code =tb_datphong.Code GROUP BY tb_chitietdatphong.code,tb_hotel.ID_Hotel   ORDER BY tb_datphong.id_Don DESC";
 	$query_lietke_dp= mysqli_query($mysqli,$sql_lietke_dp);
 
    ?>
@@ -42,10 +43,11 @@ while ($row = mysqli_fetch_array($query_lietke_dp)){
     <th><?php echo $row['EndDay'] ?></th>
     <th><?php echo number_format($row['Giaphong'],0,',','.').'VNĐ' ?></th>
     <th> <?php echo number_format($thanhtien,0,',','.').'VNĐ' ?></th>
+    <th><a href="index.php?quanli=thongtin&id=<?php echo $row['ID_Hotel'] ?>&update=<?php echo $row['id_chitiet'] ?>">Thay đổi</a></th>
   </tr>
   
   <?php } ?>
-  <tr>
+  <tr>  
   	<td>
   </tr>
    	<td colspan="8">Tổng tiền : <?php echo number_format($tongtien,0,',','.').'VNĐ' ?></td>

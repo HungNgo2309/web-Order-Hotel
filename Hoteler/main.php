@@ -29,6 +29,9 @@
 					elseif ($Tam =='chitiet'&& $query == 'sua') {
 						include ("suachitiet.php");
 					}
+					elseif ($Tam =='chitiet'&& $query == 'xoa') {
+						include ("xuli.php");
+					}
 
 	?>
 </div>

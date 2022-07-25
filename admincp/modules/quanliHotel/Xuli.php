@@ -21,7 +21,8 @@ if(isset($_POST['themsp'])){
 	header('Location:../../index.php?action=quanliHotel&query=them');
 } elseif (isset($_POST['suasp'])) {
 
-	if ($hinhanh!=''){
+	if ($hinhanh_tmp!=''){
+		echo $hinhanh_tmp;
 		move_uploaded_file($hinhanh_tmp,'Uploads/'.$hinhanh);
 	$sql_update ="UPDATE tb_hotel SET TenHotel='".$tenhotel."' ,Giaphong='".$gia."',Soluong='".$soluong."',Noidung='".$noidung."',Hinhanh='".$hinhanh."',Tomtat='".$tomtat."',MaHotel='".$mahotel."',Tinhtrang='".$tinhtrang."',ID_Tinh='".$danhmuc."',HTML_map='".$vitri."'   Where ID_Hotel='$_GET[idhotel]'";
 	$sql = "SELECT* From tb_hotel where ID_Hotel = '$_GET[idhotel]' LIMIT 1";
@@ -31,8 +32,9 @@ if(isset($_POST['themsp'])){
 					unlink('Uploads/'.$row['Hinhanh']);
 				}
 
-} elseif ($hinhanh==''){
+} else{
 	$sql_update ="UPDATE tb_hotel SET TenHotel='".$tenhotel."' ,Giaphong='".$gia."',Soluong='".$soluong."',Noidung='".$noidung."',Tomtat='".$tomtat."',MaHotel='".$mahotel."',Tinhtrang='".$tinhtrang."',ID_Tinh='".$danhmuc."',HTML_map='".$vitri."'   Where ID_Hotel='$_GET[idhotel]'";
+	print_r($sql_update);
 }
 	mysqli_query($mysqli, $sql_update);
 	header('Location:../../index.php?action=quanliHotel&query=them');

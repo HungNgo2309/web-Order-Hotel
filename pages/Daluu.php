@@ -1,4 +1,3 @@
-
 <p>Khách sạn đã lưu  
  
   <?php if(isset($_SESSION['dangky'])){
@@ -30,8 +29,8 @@
    ?>
   <tr>
     <td><?php echo $i ?></td>
-    <td><?php echo $cart_item['MaHotel'] ?></td>
-    <td><?php echo $cart_item['TenHotel'] ?></td>
+    <td><?php echo $cart_item['id'] ?></td>
+    <td><a href="index.php?quanli=hotel&id=<?php echo $cart_item['id'] ?>"><?php echo $cart_item['TenHotel'] ?></a></td></td>
     <td><img src="admincp/modules/quanliHotel/Uploads/<?php echo $cart_item['Hinhanh'] ?>" width="150px"></td>
     <td>
     	<a href="pages/Themgiohang.php?cong=<?php echo $cart_item['id']	?>"><b> + </b></a>

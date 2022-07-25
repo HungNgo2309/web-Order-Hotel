@@ -17,13 +17,13 @@
 			</div> 	
 					<div class="row row-mt-15em">
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							<h1>Bạn lo ngại việc đi du lịch hay làm việc mà không có nơi ở?</h1>	
+							<h1  style="font-family:arial;">Bạn lo ngại việc đi du lịch hay làm việc mà không có nơi ở?</h1>	
 						</div>
 						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
 							<div class="form-wrap">
 								<div class="tab">
 								<?php 
-								if(isset($_SESSION['dangky'])&& $_GET['quanli']=='hotel'){ 
+								if(isset($_SESSION['dangky'])&& isset($_GET['quanli'])&& $_GET['quanli']=='hotel'){ 
 									$id_hotel = $_GET['id'];
 						        $row_dathotel= mysqli_query($mysqli,"SELECT * FROM tb_hotel,tb_danhmuchotel Where tb_hotel.ID_Tinh = tb_danhmuchotel.ID_Tinh AND tb_hotel.ID_Hotel='".$id_hotel."' ");
 						        $row_dat_hotel= mysqli_fetch_array($row_dathotel);
@@ -49,17 +49,20 @@
 														<label for="activities">Tên Khách sạn</label>
 														<input type="text" id="fullname" class="form-control" name="tenhotel" value="<?php echo $row_dat_hotel['TenHotel'] ?>">												
 															<option value="<?php echo $row_dat_hotel['TenHotel'] ?>"></option>
-															
-														</select>
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="destination">Địa điểm</label>
-														<input type="text" id="fullname" class="form-control" name="" value="<?php echo $row_dat_hotel['Name'] ?>">
+														<label for="activities">Loại phòng</label>
+														<select name="typeroom" id="activities" class="form-control">
+															<?php 
+															$sql_type="SELECT * FROM tb_hotel,tb_chitiethotel Where tb_hotel.ID_Hotel=tb_chitiethotel.ID_Hotel AND tb_hotel.ID_Hotel ='$_GET[id]' ";
+							      $query_type =mysqli_query($mysqli,$sql_type);
+							          while ($row_type = mysqli_fetch_array($query_type)){
+															 ?>
 															
-															
-														
+															<option value="<?php echo $row_type['TyperoomHotel'] ?>"><?php echo $row_type['TyperoomHotel'] ?></option>
+															<?php } ?>
 														</select>
 													</div>
 												</div>

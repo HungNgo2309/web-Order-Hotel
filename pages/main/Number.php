@@ -3,7 +3,7 @@
 		<div class="gtco-container text-center">
 			<div class="display-t">
 				<div class="display-tc">
-					<h1>Chúng tôi có các dịch vụ chất lượng cao mà bạn chắc chắn sẽ yêu thích!</h1>
+					<h1 style="font-family:arial;">Chúng tôi có các dịch vụ chất lượng cao mà bạn chắc chắn sẽ yêu thích!</h1>
 				</div>	
 			</div>
 		</div>
@@ -14,7 +14,7 @@
 
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-					<h2>Thành công của chúng tôi</h2>
+					<h2 style="font-family:arial;">Thành công của chúng tôi</h2>
 					<p></p>
 				</div>
 			</div>

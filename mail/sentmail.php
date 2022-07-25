@@ -17,9 +17,9 @@ class Mailer{
 				
 			
 		    //Server settings
-		    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+		    $mail->SMTPDebug = false;                                 // Enable verbose debug output
 		    $mail->isSMTP();                                      // Set mailer to use SMTP
-		     $mail->Host = 'smtp.gmail.com'; 
+		    $mail->Host = 'smtp.gmail.com'; 
 		    
 		 // Specify main and backup SMTP servers
 		    $mail->SMTPAuth = true; 
@@ -28,7 +28,7 @@ class Mailer{
 		    $mail->Password = 'dxbiczzmtcuhzger';                           // SMTP password
 		    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 		    
-		    $mail->Port = 25;                                     // TCP port to connect to
+		    $mail->Port = 587;                                     // TCP port to connect to
 		 
 		    //Recipients
 		    $mail->setFrom('hotelvietnam6@gmail.com', 'Hotels Việt Nam');
@@ -48,8 +48,8 @@ class Mailer{
 		    $mail->Body    = $noidung;
 		    // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 		 
-		    $mail->send();
-		    echo 'Message has been sent';
+		    $result = $mail->send();
+		    return $result;
 		} catch (Exception $e) {
 		    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}

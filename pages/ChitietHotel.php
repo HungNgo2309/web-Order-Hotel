@@ -8,7 +8,7 @@ if (isset($_POST['comment']))
   $sql_rating= mysqli_query($mysqli,"INSERT INTO tb_ratehotel(ID_Hotel,numberstar,Username,Comment) VALUE('".$id_hotel."','".$star."','".$username."','".$comment."')");
 
 }  
-$sql_chitiet = "SELECT *FROM tb_danhmuchotel,tb_hotel Where tb_hotel.ID_Tinh = tb_danhmuchotel.ID_Tinh AND tb_hotel.ID_Hotel ='$_GET[id]'  LIMIT 1";
+$sql_chitiet = "SELECT *FROM tb_danhmuchotel,tb_hotel,tb_chitiethotel Where tb_hotel.ID_Tinh = tb_danhmuchotel.ID_Tinh AND tb_hotel.ID_Hotel=tb_chitiethotel.ID_Hotel AND tb_hotel.ID_Hotel ='$_GET[id]'  LIMIT 1";
           $query_chitiet =mysqli_query($mysqli,$sql_chitiet);
           while ($row_chitiet = mysqli_fetch_array($query_chitiet)){
 ?>
@@ -85,7 +85,11 @@ label.star:before {
 
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#menu3">Đánh giá</a>
-  </li>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#menu4">Loại phòng</a>
+</li>
 </ul>
 
 <!-- Tab panes -->
@@ -95,7 +99,7 @@ label.star:before {
   <div class="tab-pane container" id="menu2"><?php echo $row_chitiet['HTML_map'] ?></div>
 
   <div class="tab-pane container" id="menu3">
-    
+      
     <?php if (isset( $_SESSION['dangky'])) {?>
     <form action="" method="POST" >
           <div class="stars">
@@ -124,6 +128,7 @@ label.star:before {
     $sql_rate = "SELECT * FROM tb_ratehotel Where ID_Hotel= '".$row_chitiet['ID_Hotel']."' ";
               $query_rate=mysqli_query($mysqli,$sql_rate);
               while ($row_rate =mysqli_fetch_array($query_rate)){
+
      ?>
      <p><img src="Images/img_avatar3.png" style="width:60px;"><?php echo $row_rate['Username'] ?>
        <div>
@@ -138,6 +143,31 @@ label.star:before {
      </p>
      <p><?php echo $row_rate['Comment']  ?></p>
    <?php } ?>
+  </div>
+  <div class="tab-pane container" id="menu4">
+    
+    <table border="1" style="margin: 0px auto; text-align: center;" width="70%">
+
+      <tr>
+        <td>Tên phòng</td>
+        <td>Người lớn</td>
+        <td>Trẻ em</td>
+        <td>Giá</td>
+      </tr>
+      <?php 
+      $sql_type="SELECT * FROM tb_hotel,tb_chitiethotel Where tb_hotel.ID_Hotel=tb_chitiethotel.ID_Hotel AND tb_hotel.ID_Hotel ='$_GET[id]' ";
+      $query_type =mysqli_query($mysqli,$sql_type);
+          while ($row_type = mysqli_fetch_array($query_type)){
+     ?>
+      <tr>
+        <td><?php echo $row_type['TyperoomHotel'] ?></td>
+        <td><?php echo $row_type['NumberPeople'] ?></td>
+        <td><?php echo $row_type['NumberChild'] ?></td>
+        <td><?php echo  number_format($row_type['Price'],0,',','.' ) ?>VNĐ</td>
+      </tr>
+       <?php } ?>
+    </table>
+ 
   </div>
 </div>
 </div>

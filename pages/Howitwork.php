@@ -2,8 +2,8 @@
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-					<h2>Hướng dẫn đặt phòng</h2>
-					<p>Dưới đây là 3 bước hướng dẫn chi tiết giúp bạn dặt phòng nhanh gọn</p>
+					<h2 style="font-family:arial;">Hướng dẫn đặt phòng</h2>
+					<p style="font-family:arial;" >Dưới đây là 3 bước hướng dẫn chi tiết giúp bạn dặt phòng nhanh gọn</p>
 				</div>
 			</div>
 			<div class="row">

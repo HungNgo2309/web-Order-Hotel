@@ -34,7 +34,9 @@
 						{include ("Daluu.php");}
 					else if($Tam == 'lichsudatphong')
 						{include ("lichsu.php");}
-					else include ("Tinh/index.php");
+					else if($Tam == 'thongtin')
+						{include ("Thongtindon.php");}
+					else include ("main/index.php");
 				 ?>
 		</div>
 	</div>
